@@ -9,12 +9,25 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var flipCount = 0
+    {
+        // this is called a property observer
+        // it gets called everytime flipCount is set
+        didSet{
+            flipCountLabel.text = "Flips: \(flipCount)"
+        }
+    }
 
+    @IBOutlet weak var flipCountLabel: UILabel!
+    
     @IBAction func TouchCard(_ sender: UIButton) {
+        flipCount += 1
         FlipCard(withEmoji: "👻", on: sender)
     }
     
     @IBAction func TouchSecondCard(_ sender: UIButton) {
+        flipCount += 1
         FlipCard(withEmoji: "🎃", on: sender)
     }
     
