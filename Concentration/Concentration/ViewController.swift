@@ -14,6 +14,10 @@ class ViewController: UIViewController {
         FlipCard(withEmoji: "👻", on: sender)
     }
     
+    @IBAction func TouchSecondCard(_ sender: UIButton) {
+        FlipCard(withEmoji: "🎃", on: sender)
+    }
+    
     func FlipCard(withEmoji emoji: String, on button: UIButton) {
         if button.currentTitle == emoji {
             button.setTitle("", for: UIControl.State.normal)
