@@ -19,17 +19,25 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBOutlet var cardButtons: [UIButton]!
+    
+    let emojiChoices = ["🎃", "👻", "🎃", "👻"];
+    
     @IBOutlet weak var flipCountLabel: UILabel!
     
     @IBAction func TouchCard(_ sender: UIButton) {
         flipCount += 1
-        FlipCard(withEmoji: "👻", on: sender)
+        // .index of returns int?, this means its of type 'optional'
+        // if its set then it has an int value else its nil, like nullable
+        // in c#
+        if let cardNumber = cardButtons.index(of: sender) {
+            FlipCard(withEmoji: emojiChoices[cardNumber], on: sender)
+        }
+        else {
+            print("chosen card was not in cardButtons")
+        }
     }
     
-    @IBAction func TouchSecondCard(_ sender: UIButton) {
-        flipCount += 1
-        FlipCard(withEmoji: "🎃", on: sender)
-    }
     
     func FlipCard(withEmoji emoji: String, on button: UIButton) {
         if button.currentTitle == emoji {
