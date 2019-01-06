@@ -1,4 +1,4 @@
-//
+ //
 //  Card .swift
 //  Concentration
 //
@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+ struct Card
+ {
+    
+ }
