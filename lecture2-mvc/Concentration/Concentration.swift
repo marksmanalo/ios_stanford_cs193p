@@ -10,10 +10,20 @@ import Foundation
 
 class Concentration
 {
-    var cards: Array<Card>
+    var cards = [Card]()
     
-    func chooseCard(at index: int)
+    func chooseCard(at index: Int)
     {
          
+    }
+    
+    init(numberOfPairsOfCards: Int)
+    {
+        for identifier in 1...numberOfPairsOfCards
+        {
+            let card = Card()
+            // since Card is a struct they are copied when you put them into the array
+            cards += [card, card] // you can append to arrays with the + operator, so we are adding the card and the matching card
+        }
     }
 }
