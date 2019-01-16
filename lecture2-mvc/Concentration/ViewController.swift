@@ -30,13 +30,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var flipCountLabel: UILabel!
     
     @IBAction func TouchCard(_ sender: UIButton) {
-        flipCount += 1
         // .index of returns int?, this means its of type 'optional'
         // if its set then it has an int value else its nil, like nullable
         // in c#
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
+            let card = game.cards[cardNumber]
+            if !card.isMatched {
+                flipCount += 1
+            }
         }
         else {
             print("chosen card was not in cardButtons")
