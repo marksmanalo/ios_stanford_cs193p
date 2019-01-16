@@ -27,8 +27,6 @@ class ViewController: UIViewController {
 
     @IBOutlet var cardButtons: [UIButton]!
     
-    let emojiChoices = ["🎃", "👻", "🎃", "👻"];
-    
     @IBOutlet weak var flipCountLabel: UILabel!
     
     @IBAction func TouchCard(_ sender: UIButton) {
@@ -37,7 +35,7 @@ class ViewController: UIViewController {
         // if its set then it has an int value else its nil, like nullable
         // in c#
         if let cardNumber = cardButtons.index(of: sender) {
-            game.chooseCard(at: <#T##Int#>)
+            game.chooseCard(at: cardNumber)
             updateViewFromModel()
         }
         else {
@@ -60,8 +58,22 @@ class ViewController: UIViewController {
         }
     }
     
+    var emojiChoices = ["🎃", "👻", "👣", "👁", "🦷", "💄", "🎱", "💯", "🥦"];
+    
+    var emoji = Dictionary<Int, String>()
+    
     func emoji(for card: Card ) -> String {
-        return "?"
+        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
+            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
+            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+        }
+        
+        if emoji[card.identifier] != nil {
+            // the "!" is like .value in c# nullable types
+            return emoji[card.identifier]!
+        } else {
+            return "?"
+        }
     }
 }
 
