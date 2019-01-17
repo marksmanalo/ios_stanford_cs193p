@@ -44,6 +44,6 @@ class Concentration
             cards += [card, card] // you can append to arrays with the + operator, so we are adding the card and the matching card
         }        
         
-        // TODO: shuffle cardsa
+        cards.shuffle()
     }
 }
