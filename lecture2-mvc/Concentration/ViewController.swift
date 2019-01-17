@@ -34,12 +34,12 @@ class ViewController: UIViewController {
         // if its set then it has an int value else its nil, like nullable
         // in c#
         if let cardNumber = cardButtons.index(of: sender) {
-            game.chooseCard(at: cardNumber)
-            updateViewFromModel()
             let card = game.cards[cardNumber]
             if !card.isMatched {
                 flipCount += 1
             }
+            game.chooseCard(at: cardNumber)
+            updateViewFromModel()
         }
         else {
             print("chosen card was not in cardButtons")
