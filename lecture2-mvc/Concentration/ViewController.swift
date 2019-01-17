@@ -24,7 +24,11 @@ class ViewController: UIViewController {
             flipCountLabel.text = "Flips: \(flipCount)"
         }
     }
-
+    
+    @IBAction func newGame(_ sender: UIButton) {
+        
+    }
+    
     @IBOutlet var cardButtons: [UIButton]!
     
     @IBOutlet weak var flipCountLabel: UILabel!
