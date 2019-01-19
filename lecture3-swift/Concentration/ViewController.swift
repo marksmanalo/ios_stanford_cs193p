@@ -14,7 +14,13 @@ class ViewController: UIViewController {
     // ViewController is still initializing itself and this includes initializing var game, var cardButtons etc...
     // We can use lazy to get arround this. Making a var lazy means it doesnt actually initialize until
     // someone needs to use it
-    lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
+    lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
+    
+    var numberOfPairsOfCards: Int {
+        get {
+            return (cardButtons.count + 1) / 2
+        }
+    }
     
     var flipCount = 0
     {
